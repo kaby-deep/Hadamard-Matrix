@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Hadamard</title>
+        <style>
+            body
+            {
+                background-image: linear-gradient(rgb(185, 11, 124),rgb(57, 2, 52));
+                color:rgb(0, 0, 0)
+            }
+        </style>
+        <script>
+            function Hadamard()
+            {
+                var n=document.getElementById("order").value;
+                var arr=new Array(n);
+                for(var i=0;i<n;i++)
+                {
+                    arr[i]=new Array(n);
+                }
+                arr[0][0]=true;
+                for(var k=1; k<n ;k=k+k)
+                {
+                    for(var i=0; i<k ;i++)
+                    {
+                        for(var j=0; j<k ;j++)
+                        {
+                            
+                            arr[i+k][j]=arr[i][j];
+                            arr[i][j+k]=arr[i][j];
+                            if(arr[i][j])
+                            {
+                                arr[i+k][j+k]=false;
+                            }
+                            else
+                            {
+                                arr[i+k][j+k]=true;
+                            }
+                        }
+                    }
+                }
+                
+                for(var i=0;i<n;i++)
+                {
+                    for(var j=0;j<n;j++)
+                    {
+                        if(arr[i][j])
+                        {
+                            document.write('<img src="dark.JPEG" width=8px height=8px border=2px>');
+                        }
+                        else
+                        {
+                            document.write('<img src="light.JPEG" width=8px height=8px border=2px>');
+                        }
+                    }
+                    
+                    document.write("<br>");
+                }
+                
+            }
+            
+        </script>
+    </head>
+    <body>
+        <h1 style="color:rgb(53, 6, 46); font-family: sans-serif; font-size: 50; text-align: center;"><br><br>
+        Hadamard Matrix Visualization</h1>
+        
+        <div align-self="center">
+            <form style="align-content: center;align-self: center;">
+                <center><span style="color:rgb(51, 2, 32); font-size: medium;">Enter the order of Matrix (2^n):</span>
+                <input style="align-content: center;"type="text" id="order">
+                <input type="submit" style="background-color: rgb(223, 130, 251); color: black; size: 20dvb;" onclick="Hadamard()">
+            </center>
+            </form>
+        </div>
+        
+    </body>
+</html>
